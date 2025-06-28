@@ -20,4 +20,4 @@ Text data is preprocessed and vectorized for training a Naive Bayes classifier.
 The model is evaluated for accuracy in classifying messages as spam or ham.
 
 output:
-    "C:\Users\MADHU KIRAN\OneDrive\Pictures\Screenshots\Screenshot 2025-06-28 222514.png"
+   ![Image](https://github.com/user-attachments/assets/b2b80607-0c6a-4ec7-8516-a689c70502e2)
