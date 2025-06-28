@@ -11,6 +11,8 @@ DOMAIN:python programming
 DURATION: 4 WEEKS
 
 MENTOR:NEELA SANTOSH
+
+
 Description:
       This project builds a predictive spam detection model using scikit-learn.
 We use the SMS Spam Collection dataset with labeled messages.
