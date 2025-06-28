@@ -1,0 +1,45 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+data = pd.read_csv('https://raw.githubusercontent.com/justmarkham/pycon-2016-tutorial/master/data/sms.tsv',
+                   sep='\t', header=None, names=['label', 'message'])
+
+print("Sample data:")
+print(data.head())
+
+
+data['label_num'] = data.label.map({'ham':0, 'spam':1})
+
+
+X_train, X_test, y_train, y_test = train_test_split(
+    data['message'],
+    data['label_num'],
+    test_size=0.2,
+    random_state=42
+)
+
+vectorizer = CountVectorizer()
+X_train_dtm = vectorizer.fit_transform(X_train)
+X_test_dtm = vectorizer.transform(X_test)
+
+# Step 5: Train classifier
+model = MultinomialNB()
+model.fit(X_train_dtm, y_train)
+
+y_pred = model.predict(X_test_dtm)
+
+# Step 7: Evaluate model
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+print("\nAccuracy Score:")
+print(accuracy_score(y_test, y_pred))
+
+
